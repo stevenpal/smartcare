@@ -55,11 +55,71 @@ Smart Care is a channel agnostic platform that enables brands to foster customer
 </p>
 <blockquote>On an average companies take 22.9 hours to respond, while customers expect a response within 6 hours.</blockquote>
 <p>
-This platform will bridge the gap between customer expectations and cost of delivering service by detecting and responding to customer questions without human intervention.
+The platform serves to bridge this gap between customer expectations and service by detecting and responding to customer questions without human intervention.
 </p>
-<h2 class="section-heading">How does the Platform work ?</h2>
+<h2 class="section-heading">What is the Smart Care Platform ?</h2>
 <p>
-Incoming communications across all channels including emails, communities, chats, web forms are routed to the smart care platform. Here, the raw text is analyzed and customer issue is identified with the help of a classifier. At the heart of this platform is a convolutional neural network which powers all the analysis.  A key feature of the system is that it continuously learns and improves its performance.
+  In the simplest terms, the Smart Care Platform is a black box that categorizes all incoming customer communication into its relevant issue. These categories are used to generate a response that will address the customer’s problems.
+
+  In its Version 1, the platform is focused on classifying web form submissions and emails into their relevant categories and responding to customers with the most suitable templated response. Since, generating unstructured responses is an evolving technology, this approach provides a reliable solution to organizations while leaving space for future development.
+</p>
+<h2 class="section-heading">Who’s it for?</h2>
+<p>
+Customer Care - those organizations that receive a large volume of customer queries via multiple channels and are looking to reduce response time.
+</p>
+<h2 class="section-heading">How does it work ?</h2>
+<p>
+The platform consists of the following key components, as described-
+</p>
+
+<h3>Classifier</h3>
+<p>The classifier takes the raw text as an input and utilizes Natural Language Processing (NLP) techniques to predict which category is the most suitable for the email and what product is referred in the email by the customer. Each output has a confidence level associated with it, so that emails with only higher confidence receive a response while others are routed to agents for manual review.
+
+All classified emails  with predicted outcome are stored in a database. It will also incorporate a feedback mechanism to continuously train the model with new training data that will include all cases where classification was incorrect or low accuracy.
+
+The classifier is a classification model using word-to-vetor convolutional neural network algorithms to analyze input text. It has been trained on large amounts of data that consists of emails and their correct categories. This model is being developed in TensorFlow due to the flexibility it provides in customization.
+</p>
+<h3>API</h3>
+<p>An API is used to the expose the functionality of the platform. It serves as an interface to communicate with all third-party applications including CRM systems.
+Following are the primary uses of the API -
+All incoming emails are routed to the platform
+Update categories in third-party systems
+Continuously re-train model with new training data
+</p>
+<h3>Feedback Loop</h3>
+<p>A key feature of the platform is that it will continuously evolve by learning from all communications between customer support teams and customers and further refine its analysis.
+
+A feedback loop is used to continuously train the classifier and improve its accuracy. All emails where Smart Care could not predict the category with a high accuracy and where an incorrect category was predicted will be input back to the classifier as training data.
+This training data will be collected from CRM systems via a daily/weekly export and pushed to Smart Care via the API.
+
+When importing training data, update database with categories from CRM. This is required since there will be cases where predicted outcome is not the correct category and keeping track of such cases is essential for reporting and re-training the model.
+</p>
+
+<figure>
+  <amp-img src="img/architecture.png" alt="Architecture" height="540" width="960" />
+  <figcaption>High Level Architecture</figcaption>
+</figure>
+
+<h3>Dashboard</h3>
+<p>A dashboard for users to review the output from the platform.
+User will be able to view the output (categories), confidence level and corresponding input for each email.
+Additionally, user should be able to edit the output for a email and the changes should be reflected in all integrated applications.
+</p>
+
+<h3>Reporting</h3>
+<p>Track key performance metrics to understand how the system is performing. Use data from cases stored in database to track metrics.
+
+Number of emails processed successfully
+Total number of emails that were input to system
+Accuracy and Confidence level
+Distribution of categories to help understand what are the most common issues that customers are facing
+Confidence level by categories to identify categories where the platform is predicting accurate and inaccurate results.
+</p>
+
+<h2 class="section-heading">What lies ahead ?</h2>
+<p>
+Our goal is to make Smart Care the go-to platform for customer care organizations to automate communications with customers across emails, web forms and communities.
+As machine learning technologies continue to evolve, the platform will continue to evolve to a stage where it can automatically generate unstructured responses to customer queries and not rely on templates.
 </p>
                 </div>
             </div>
